@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Cinzel', serif;
+   }
+   
+   .bgimg{
+    width: 100%;
+    height: 100vh;
+    background: url("image 4.png");
+   }
+   
+   
+   #profilepic{
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    left: 653px;
+    top: 300px;
+
+    mix-blend-mode: lighten;
+   }
+   h1{
+    position: absolute;
+    width: 400px;
+    height: 90px;
+    left: 450px;
+    top: 30px;
+    
+    font-family: Actor;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 96px;
+    line-height: 115px;
+    text-align: center;
+    
+    color: #FFFFFF;
+    
+   }
+   h2{
+    position: absolute;
+    width: 212px;
+    height: 29px;
+    left: 623px;
+    top: 200px;
+    
+    font-family: Actor;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+    
+    text-align: center;
+    
+    color: #FFFFFF;
+    
+    
+   }
+   
+   .inputbox{
+    top:500px;
+    left: 418;
+    width: 500px;
+    height: 40px;
+    border: 3px solid #73AD21;
+   }
+
+   ::placeholder{
+    letter-spacing: 2px;
+    color: black;
+   }
+   
+   .button{
+    width: 400px;
+    height: 30px;
+    display: block;
+    margin: auto;
+    color: rgb(185, 185, 224);
+    background-color: #3f1b30;
+    border: none;
+    left: 434px;
+    top: 800px;
+   }
+   .checkbox{
+    position: absolute;
+    width: 19px;
+    height: 13px;
+    left: 434px;
+    top: 400px;
+    
+    background: #FFFFFF;
+   }
+   

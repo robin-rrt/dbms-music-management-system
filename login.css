@@ -1,5 +1,5 @@
 *{
-    margin: 0;
+    margin: 0px;
     padding: 0;
     font-family: 'Cinzel', serif;
    }
@@ -10,19 +10,9 @@
     background: url("image 4.png");
    }
    
-   
-   #profilepic{
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    left: 653px;
-    top: 300px;
-
-    mix-blend-mode: lighten;
-   }
    h1{
     position: absolute;
-    width: 400px;
+    width: 200px;
     height: 90px;
     left: 450px;
     top: 30px;
@@ -41,8 +31,8 @@
     position: absolute;
     width: 212px;
     height: 29px;
-    left: 623px;
-    top: 200px;
+    left: 580px;
+    top: 150px;
     
     font-family: Actor;
     font-style: normal;
@@ -57,11 +47,26 @@
     
     
    }
-   
-   .inputbox{
-    top:500px;
-    left: 418;
-    width: 500px;
+   #profilepic{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 600px;
+    top: 220px;
+
+    mix-blend-mode: lighten;
+   }
+   .box{
+        position:absolute;
+        left: 488px;
+        top: 400px;
+   }
+
+
+   .inputbox{ 
+    padding: 6px 9px;
+    margin: 5px 0;
+    width: 350px;
     height: 40px;
     border: 3px solid #73AD21;
    }
@@ -71,24 +76,37 @@
     color: black;
    }
    
-   .button{
-    width: 400px;
-    height: 30px;
-    display: block;
-    margin: auto;
-    color: rgb(185, 185, 224);
-    background-color: #3f1b30;
-    border: none;
-    left: 434px;
-    top: 800px;
-   }
    .checkbox{
-    position: absolute;
-    width: 19px;
-    height: 13px;
-    left: 434px;
+    width: 25px;
+    height: 25px;
+    left: 325px;
     top: 400px;
-    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background: #FFFFFF;
+    color: #FFFFFF;
+    margin: 20px;
    }
-   
+   .button{
+    width: 100px;
+    height: 29px;
+    margin: 15px 0;
+    display: grid;
+    border-radius: 12px;
+    padding: 5px 11px;
+    color: rgb(240, 240, 241);
+    background-color: #a02baa;
+    border: black;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    left: 434px;
+    top: 600px;
+   }
+   .box{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    
+    color: #FFFFFF;
+   }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+ <head>
+  <title>LoginForm</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+  <div class="bgimg">
+	<center> 
+	<h1>WELCOME</h1>
+	<h2>to your account</h2>
+    <img src="Rectangle 1.png" id="profilepic">
+	<form>
+		<div>
+			<input type="text" name="" class="inputbox" placeholder="Username">
+		   </div>
+		   <br>
+     <div>
+      <input type="Password" name="" class="inputbox" placeholder="Password">
+     </div>
+     <br></center>
+     <center>
+	 <input type="checkbox" checked="checked" class="checkbox">keep me signed in
+  
+	 <input type="checkbox" class="checkbox">forgot password
+   <div>
+      <button type="submit"> LOGIN </button>
+   </div>
+  </form>
+	</center>
+  </div>
+ </body>
+</html>

@@ -5,7 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
 const { ExpressOIDC } = require('@okta/oidc-middleware')
-const dashboardRouter = require('./routes/dashboard')
+var dashboardRouter = require('./routes/dashboard')
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -19,11 +21,9 @@ const oidc = new ExpressOIDC({
 
 // Set 'views' directory for any views 
 // being rendered res.render()
-app.set('views', path.join(__dirname, 'views'));
-
 // Set view engine as EJS
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -37,46 +37,46 @@ app.use(session({
   saveUninitialized: false,
   }))
 
-  app.use(oidc.router)
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-// app.use('/dashboard', oidc.ensureAuthenticated(), dashboardRouter)
+app.use(oidc.router);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/dashboard', oidc.ensureAuthenticated(), dashboardRouter);
 
 app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })
 
-// index page
-app.get('/', function(req, res) {
-  res.render('pages/auth.ejs');
-  if(req.userContext){
-    res.render('pages/auth', {title: 'MUZIKI Authentication',
-    userinfo: req.userinfo,})
-  }
-  else{
-    res.render('login', {title: 'Express'})
-  }
-});
+//index page
+// app.get('/', function(req, res) {
+//   res.render('auth');
+//   if(req.userContext){
+//     res.render('auth', {title: 'MUZIKI Authentication',
+//     userinfo: req.userinfo,})
+//   }
+//   else{
+//     res.render('login', {title: 'Express'})
+//   }
+// });
 
-// // about page
-app.get('/about', function(req, res) {
-  res.render('pages/auth.ejs');
-});
+//  about page
+// app.get('/about', function(req, res) {
+//   res.render('auth');
+// });
 
-app.get('/dashboard', (req, res, next) => {
-  const descriptionList = Object.keys(req.userinfo).sort()
-    .map(key => ({
-      term: startCase(key),
-      details: (key === 'updated_at' ? new Date(req.userinfo[key] * 1000) : req.userinfo[key]),
-    }))
+// app.get('/dashboard', (req, res, next) => {
+//   const descriptionList = Object.keys(req.userinfo).sort()
+//     .map(key => ({
+//       term: startCase(key),
+//       details: (key === 'updated_at' ? new Date(req.userinfo[key] * 1000) : req.userinfo[key]),
+//     }))
 
-  res.render('dashboard', {
-    title: 'Dashboard',
-    descriptionList,
-    userinfo,
-  })
-})
+//   res.render('dashboard', {
+//     title: 'Dashboard',
+//     descriptionList,
+//     userinfo,
+//   })
+// })
 
 
 app.listen(8080);
@@ -95,8 +95,6 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('pages/error.ejs');
+  res.render('error');
 });
-
-module.exports = app;
 module.exports = { app, oidc }

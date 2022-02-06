@@ -4,20 +4,21 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
-const { ExpressOIDC } = require('@okta/oidc-middleware')
-var dashboardRouter = require('./routes/dashboard')
+// const { ExpressOIDC } = require('@okta/oidc-middleware')
+// var dashboardRouter = require('./routes/dashboard')
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
-const oidc = new ExpressOIDC({
-  issuer: `${process.env.ORG_URL}/oauth2/default`,
-  client_id: process.env.CLIENT_ID,
-  client_secret: process.env.CLIENT_SECRET,
-  redirect_uri: `${process.env.HOST_URL}/authorization-code/callback`,
-  scope: 'openid profile',
-  })
+// const oidc = new ExpressOIDC({
+//   issuer: `${process.env.ORG_URL}/oauth2/default`,
+//   client_id: process.env.CLIENT_ID,
+//   client_secret: process.env.CLIENT_SECRET,
+//   redirect_uri: `${process.env.HOST_URL}/authorization-code/callback`,
+//   scope: 'openid profile',
+//   })
 
 // Set 'views' directory for any views 
 // being rendered res.render()
@@ -31,22 +32,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({
-  secret: process.env.APP_SECRET,
-  resave: true,
-  saveUninitialized: false,
-  }))
+// app.use(session({
+//   secret: process.env.APP_SECRET,
+//   resave: true,
+//   saveUninitialized: false,
+//   }))
 
-app.use(oidc.router);
+// app.use(oidc.router);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/dashboard', oidc.ensureAuthenticated(), dashboardRouter);
+// app.use('/dashboard', oidc.ensureAuthenticated(), dashboardRouter);
 
-app.get('/logout', (req, res) => {
-  req.logout()
-  res.redirect('/')
-})
-
+// app.get('/logout', (req, res) => {
+//   req.logout()
+//   res.redirect('/')
+// })
 //index page
 // app.get('/', function(req, res) {
 //   res.render('auth');
@@ -97,4 +97,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-module.exports = { app, oidc }
+module.exports = app;

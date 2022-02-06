@@ -4,13 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
+const { body,validationResult } = require('express-validator');
 // const { ExpressOIDC } = require('@okta/oidc-middleware')
 // var dashboardRouter = require('./routes/dashboard')
 
 var indexRouter = require('./routes/index');
+var searchRouter =require('./routes/search');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+app.use(express.urlencoded({
+  extended: true
+}))
 
 // const oidc = new ExpressOIDC({
 //   issuer: `${process.env.ORG_URL}/oauth2/default`,
@@ -41,6 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(oidc.router);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/search', searchRouter);
 // app.use('/dashboard', oidc.ensureAuthenticated(), dashboardRouter);
 
 // app.get('/logout', (req, res) => {

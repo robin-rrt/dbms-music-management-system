@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
 const { body,validationResult } = require('express-validator');
+const bodyParser = require('body-parser')
+const mysql = require('mysql')
 // const { ExpressOIDC } = require('@okta/oidc-middleware')
 // var dashboardRouter = require('./routes/dashboard')
 
@@ -95,6 +97,39 @@ app.use('/artist-result', artisteSearchRouter);
 
 app.listen(8080);
 console.log('Server is listening on port 8080');
+
+//MYSQL
+const pool = mysql.createPool({
+  connectionLimit: 10,
+  host: '127.0.0.1',
+  user: 'root',
+  password: '',
+  database: 'dbms'
+})
+
+app.get('/sql', (req, res) => {
+  pool.getConnection((err, connection) => {
+      if(err) throw err
+      console.log('connected as id ' + connection.threadId)
+      connection.query('SELECT * from artist', (err, rows) => {
+          connection.release() // return the connection to pool
+
+          if (!err) {
+              res.send(rows)
+          } else {
+              console.log(err)
+          }
+
+          // if(err) throw err
+          console.log('The Artists are: \n', rows)
+      })
+  })
+})
+
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -824,10 +824,24 @@ button {
   -ms-flex-align: center;
       align-items: center;
   font-family: 'Poppins', sans-serif;
+  padding: 15px;
+}
+.s132-bg{
   background: url("../image/Search_132.png");
   background-size: cover;
   background-position: center center;
-  padding: 15px;
+}
+
+.s133{
+  min-height: 100vh;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  font-family: 'Poppins', sans-serif;
+  padding: 3px;
 }
 
 .s132 form {

@@ -7,10 +7,16 @@
     <meta name="author" content="colorlib.com">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400" rel="stylesheet" />
     <link href="stylesheets/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="stylesheets/search-style.css">
+
   </head>
+  
   <body>
-    
-    <div class="s132">
+
+    <header class="header-area">
+      <%- include ('partials/header'); %>  
+    </header>
+    <div class="s132 s132-bg">
       <h1 style="text-align: center;padding: 2%; color: aliceblue;"><%= title %></h1>
       <form method="POST" action="/search">
         <div class="inner-form">

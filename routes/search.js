@@ -15,7 +15,7 @@ router.post('/', body('search').trim(), body('choices').trim(),
                 const choiceItem = req.body.choices;
                 if(searchItem == ''){
                     alert("Please enter a search query");
-                    res.redirect('search')
+                    res.render('search');
                 }
                 else if(choiceItem == 'Search By'){
                     alert("Please select a category");
@@ -23,13 +23,13 @@ router.post('/', body('search').trim(), body('choices').trim(),
                 }
                 
                 if(choiceItem == 'Song'){
-                    res.redirect('search/song/result');
+                    res.redirect('song-result');
                 }
                 else if(choiceItem == 'Genre'){
-                    res.redirect('search/genre/result');
+                    res.redirect('genre-result');
                 }
                 else if(choiceItem == 'Artist'){
-                    res.redirect('search/artist/result');
+                    res.redirect('artist-result');
                 }
 
                 console.log(searchItem);

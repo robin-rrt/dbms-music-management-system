@@ -11,6 +11,10 @@ const { body,validationResult } = require('express-validator');
 var indexRouter = require('./routes/index');
 var searchRouter =require('./routes/search');
 var usersRouter = require('./routes/users');
+var genreSearchRouter = require('./routes/genreSearch');
+var songSearchRouter = require('./routes/songSearch');
+var artisteSearchRouter = require('./routes/artistSearch');
+
 
 var app = express();
 
@@ -48,6 +52,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
+app.use('/genre-result', genreSearchRouter);
+app.use('/song-result', songSearchRouter);
+app.use('/artist-result', artisteSearchRouter);
 // app.use('/dashboard', oidc.ensureAuthenticated(), dashboardRouter);
 
 // app.get('/logout', (req, res) => {

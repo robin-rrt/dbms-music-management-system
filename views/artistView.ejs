@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head'); %> 
+  <body>
+    <header class="header-area">
+        <%- include ('partials/header'); %>  
+      </header>
+      <br>
+      <br>
+
+    <!-- ======= About Section ======= -->
+    <div id="about" class="paddsection" style="margin-top: 30px;">
+        <div class="container">
+          <div class="row justify-content-between">
+  
+            <div class="col-lg-4 ">
+              <div class="div-img-bg">
+                <div class="about-img">
+                  <img src="image/bg-img/b2.jpg" class="img-responsive" alt="artist-photo">
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-7">
+              <div class="about-descr">
+  
+                <p class="p-heading"><%= artistName %></p>
+                <p class="separator"><%= artistBio %> </p>
+  
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div><!-- End About Section -->
+  </body>
+</html>

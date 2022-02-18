@@ -5,8 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
 const { body,validationResult } = require('express-validator');
-const bodyParser = require('body-parser')
-const mysql = require('mysql')
+const bodyParser = require('body-parser');
+const mysql = require('mysql');
 // const { ExpressOIDC } = require('@okta/oidc-middleware')
 // var dashboardRouter = require('./routes/dashboard')
 
@@ -16,6 +16,9 @@ var usersRouter = require('./routes/users');
 var genreSearchRouter = require('./routes/genreSearch');
 var songSearchRouter = require('./routes/songSearch');
 var artisteSearchRouter = require('./routes/artistSearch');
+var artistRouter = require('./routes/artist');
+var songRouter = require('./routes/song');
+
 
 
 var app = express();
@@ -57,6 +60,9 @@ app.use('/search', searchRouter);
 app.use('/genre-result', genreSearchRouter);
 app.use('/song-result', songSearchRouter);
 app.use('/artist-result', artisteSearchRouter);
+app.use('/artist', artistRouter);
+app.use('/song', songRouter);
+
 // app.use('/dashboard', oidc.ensureAuthenticated(), dashboardRouter);
 
 // app.get('/logout', (req, res) => {

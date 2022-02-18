@@ -13,7 +13,7 @@ router.post('/', body('search').trim(), body('choices').trim(),
             function(req,res) {
                 const searchItem = req.body.search;
                 const choiceItem = req.body.choices;
-                if(searchItem == ''){
+                if(searchItem == undefined){
                     alert("Please enter a search query");
                     res.render('search');
                 }

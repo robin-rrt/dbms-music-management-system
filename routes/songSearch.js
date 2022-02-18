@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET home page. */
 // index page
 router.get('/', function(req, res) {
-    res.render('search', {title: 'MUZIKI',})
+    res.render('songSearch', {title: 'Song Search',})
 });
 
 module.exports = router;

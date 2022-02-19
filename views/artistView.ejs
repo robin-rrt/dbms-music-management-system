@@ -4,6 +4,10 @@
   <body>
     <header class="header-area">
         <%- include ('partials/header'); %>  
+          <!-- Template Main CSS File -->
+  <link href="stylesheets/folio.css" rel="stylesheet">
+  <link href="stylesheets/event.css" rel="stylesheet">
+
       </header>
       <br>
       <br>
@@ -16,7 +20,7 @@
             <div class="col-lg-4 ">
               <div class="div-img-bg">
                 <div class="about-img">
-                  <img src="image/bg-img/b2.jpg" class="img-responsive" alt="artist-photo">
+                  <img src="https://cdn.britannica.com/38/200938-050-E22981D1/Freddie-Mercury-Live-Aid-Queen-Wembley-Stadium-July-13-1985.jpg" class="img-responsive" alt="artist-photo">
                 </div>
               </div>
             </div>
@@ -24,8 +28,8 @@
             <div class="col-lg-7">
               <div class="about-descr">
   
-                <p class="p-heading"><%= artistName %></p>
-                <p class="separator"><%= artistBio %> </p>
+                <p class="p-heading"><%= rows[0].artist_name %></p>
+                <p class="separator"><%= rows[0].artist_description %> </p>
   
               </div>
   
@@ -33,5 +37,21 @@
           </div>
         </div>
       </div><!-- End About Section -->
+
+      <!-- Songs section -->
+      <section id="songs">
+      <% for (var i = 0; i < 8; i++) { %>
+      <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
+
+        <div class="row songs-item">
+          <div class="col-md-2"><time>09:30 AM</time></div>
+          <div class="col-md-10">
+            <h4>Registration</h4>
+            <p>Fugit voluptas iusto maiores temporibus autem numquam magnam.</p>
+          </div>
+        </div><!--END SONG SECTION-->
+        <% } %> 
+        </div>
+      </section>
   </body>
 </html>

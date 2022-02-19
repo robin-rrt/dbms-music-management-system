@@ -15,15 +15,19 @@ const pool = mysql.createPool({
 // index page
 router.get('/', function(req, res) {
 
+    var artistName = req.query.artistName;
+    console.log(artistName);
+
 
     pool.getConnection((err, connection) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
-        connection.query("SELECT * FROM artist WHERE artist_name='Freddie Mercury'", (err, rows) => {
+        connection.query("SELECT * FROM artist WHERE artist_name= ? ", artistName,  (err, rows) => {
             connection.release() // return the connection to pool
-  
+            
             if (!err) {
-                res.send(rows)
+                // res.send(rows);
+                res.render('artistView', {title: 'ARTIST NAME', rows:rows})
             } else {
                 console.log(err)
             }
@@ -33,7 +37,7 @@ router.get('/', function(req, res) {
         })
 
     })
-    res.render('artistView', {title: 'ARTIST NAME', artistName: rows.artist_name, artistBio: rows.artist_description})
+    
 });
 
 module.exports = router;

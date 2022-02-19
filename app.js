@@ -63,42 +63,6 @@ app.use('/artist-result', artisteSearchRouter);
 app.use('/artist', artistRouter);
 app.use('/song', songRouter);
 
-// app.use('/dashboard', oidc.ensureAuthenticated(), dashboardRouter);
-
-// app.get('/logout', (req, res) => {
-//   req.logout()
-//   res.redirect('/')
-// })
-//index page
-// app.get('/', function(req, res) {
-//   res.render('auth');
-//   if(req.userContext){
-//     res.render('auth', {title: 'MUZIKI Authentication',
-//     userinfo: req.userinfo,})
-//   }
-//   else{
-//     res.render('login', {title: 'Express'})
-//   }
-// });
-
-//  about page
-// app.get('/about', function(req, res) {
-//   res.render('auth');
-// });
-
-// app.get('/dashboard', (req, res, next) => {
-//   const descriptionList = Object.keys(req.userinfo).sort()
-//     .map(key => ({
-//       term: startCase(key),
-//       details: (key === 'updated_at' ? new Date(req.userinfo[key] * 1000) : req.userinfo[key]),
-//     }))
-
-//   res.render('dashboard', {
-//     title: 'Dashboard',
-//     descriptionList,
-//     userinfo,
-//   })
-// })
 
 
 app.listen(8080);

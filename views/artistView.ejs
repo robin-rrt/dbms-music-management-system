@@ -13,14 +13,14 @@
       <br>
 
     <!-- ======= About Section ======= -->
-    <div id="about" class="paddsection" style="margin-top: 30px;">
+    <div id="about" class="paddsection" style="margin-top: 65px;">
         <div class="container">
           <div class="row justify-content-between">
   
             <div class="col-lg-4 ">
               <div class="div-img-bg">
                 <div class="about-img">
-                  <img src="https://cdn.britannica.com/38/200938-050-E22981D1/Freddie-Mercury-Live-Aid-Queen-Wembley-Stadium-July-13-1985.jpg" class="img-responsive" alt="artist-photo">
+                  <img src="<%= rows[0].artist_uri %>" class="img-responsive" alt="artist-photo">
                 </div>
               </div>
             </div>
@@ -39,15 +39,20 @@
       </div><!-- End About Section -->
 
       <!-- Songs section -->
-      <section id="songs">
+      <section id="songs"  class="section-with-bg">
+        <div class="container" data-aos="fade-up">
+          <div class="section-header">
+            <h2><%= rows[0].artist_name %> Songs</h2>
+            <p>Enjoy the muziki!</p>
+          </div>
       <% for (var i = 0; i < 8; i++) { %>
-      <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
-
         <div class="row songs-item">
-          <div class="col-md-2"><time>09:30 AM</time></div>
           <div class="col-md-10">
-            <h4>Registration</h4>
-            <p>Fugit voluptas iusto maiores temporibus autem numquam magnam.</p>
+            <div class="speaker">
+              <img src="image/bg-img/b2.jpg" alt="music">
+            </div>
+            <h4>Queens <span>Bohemian Rhapsody</span></h4>
+            <p>A song for the future</p>
           </div>
         </div><!--END SONG SECTION-->
         <% } %> 

@@ -30,8 +30,8 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-2" id="<%= rows[i].artist_name %> ">
                     <a href="/artist?artistName=<%= rows[i].artist_name %>">
                     <div class="single-album-area wow fadeInUp" data-wow-delay="200ms">
-                        <div class="album-thumb">
-                            <img src="image/bg-img/b2.jpg" alt="">
+                        <div class="album-thumb" style="width:200px;height:200px;overflow:hidden">
+                            <img src="<%= rows[i].artist_uri %>" alt="<%= rows[i].artist_name %>">
                         </div>
                         <div class="album-info">
                             
@@ -43,7 +43,7 @@
                     </a>
                 </div>
                     <% } %>
-                    
+
 
 
 

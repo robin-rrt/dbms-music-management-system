@@ -23,6 +23,16 @@ router.get('/', function(req, res) {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
         connection.query("SELECT * FROM music INNER JOIN album ON music.album_id=album.album_id INNER JOIN genre ON  music.genre_id=genre.genre_id INNER JOIN artist ON music.artist_id=artist.artist_id AND music.title = ? ", songName,  (err, rows) => {
+            connection.query(`UPDATE artist SET top_searched_artist = top_searched_artist + 1 
+                                WHERE artist.artist_id = (SELECT artist.artist_id FROM music INNER JOIN album ON music.album_id=album.album_id INNER JOIN genre ON  music.genre_id=genre.genre_id INNER JOIN artist ON music.artist_id=artist.artist_id AND music.title = ? );`, songName, (error,updated) => {
+                                    if (!err) {
+                                        // res.send(rows);
+                                        console.log(updated);
+                                    } else {
+                                        console.log(err);
+                                    }
+                                })
+            
             connection.release() // return the connection to pool
             
             if (!err) {

@@ -8,7 +8,8 @@ const pool = mysql.createPool({
     host: '127.0.0.1',
     user: 'root',
     password: '',
-    database: 'dbms'
+    database: 'dbms',
+    multipleStatements: true
   })
 
 /* GET home page. */
@@ -22,8 +23,19 @@ router.get('/', function(req, res) {
     pool.getConnection((err, connection) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
-        connection.query("SELECT * FROM artist INNER JOIN album ON artist.artist_id=album.artist_id AND artist.artist_name = ? ", artistName,  (err, rows) => {
-            connection.release() // return the connection to pool
+        connection.query(`SELECT * FROM artist 
+                            INNER JOIN album 
+                            ON artist.artist_id=album.artist_id AND artist.artist_name = ? ORDER BY top_searched_artist DESC;`, artistName,  (err, rows) => {
+                                connection.query(`UPDATE artist SET top_searched_artist = top_searched_artist + 1 
+                                WHERE artist.artist_id = (SELECT artist_id FROM artist WHERE artist_name = ?);`, artistName, (error,updated) => {
+                                    if (!err) {
+                                        // res.send(rows);
+                                        console.log(updated);
+                                    } else {
+                                        console.log(err);
+                                    }
+                                })
+                                 connection.release() // return the connection to pool
             
             if (!err) {
                 // res.send(rows);

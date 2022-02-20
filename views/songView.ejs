@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head'); %> 
+  <body>
+    <header class="header-area">
+        <%- include ('partials/navbar'); %>  
+          <!-- Template Main CSS File -->
+  <link href="stylesheets/folio.css" rel="stylesheet">
+  <link href="stylesheets/event.css" rel="stylesheet">
+
+      </header>
+      <br>
+      <br>
+
+    <!-- ======= About Section ======= -->
+    <div id="about" class="paddsection" style="margin-top: 65px;">
+        <div class="container">
+          <div class="row justify-content-between">
+  
+            <div class="col-lg-4 ">
+              <div class="div-img-bg">
+                <div class="about-img">
+                  <img src="<%= rows[0].album_uri %>" class="img-responsive" alt="artist-photo">
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-7">
+              <div class="about-descr">
+  
+                <p class="p-heading"><%= rows[0].title %> - <a href="/album?albumName=<%= rows[0].album_name %>"><span style="font-style: italic; font-size: small;"><%= rows[0].album_name %></span></a>
+                    <br>
+                    <a href="/artist?artistName=<%= rows[0].artist_name %>"><span style="font-style: italic; font-size: small;"><%= rows[0].artist_name %></span></a></p>
+                <p class="separator"><%= rows[0].album_description %> </p>
+                        <br><br><br>
+                <p class ="p-separator">Duration: <%= rows[0].duration %></p>
+  
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div><!-- End About Section -->
+
+      <!-- Songs section -->
+     
+  </body>
+</html>

@@ -15,16 +15,16 @@ const pool = mysql.createPool({
 /* GET home page. */
 // index page
 router.get('/', function(req, res) {
-  
+    var searchItem = req.query.search;
   pool.getConnection((err, connection) => {
     if(err) throw err
     console.log('connected as id ' + connection.threadId)
-    connection.query("SELECT * FROM album", (err, rows) => {
+    connection.query(`SELECT * FROM album JOIN artist ON album.artist_id=artist.artist_id AND album.album_name LIKE '${searchItem}%';`, (err, rows) => {
         connection.release() // return the connection to pool
 
         if (!err) {
             // res.send(rows);
-            res.render('albumSearch', {title: 'Album Search', rows: rows})
+            res.render('albumSearch', {title: 'Album Search', rows: rows, searchItem:searchItem})
         } else {
             console.log(err)
         }

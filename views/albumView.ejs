@@ -3,7 +3,7 @@
   <%- include('partials/head'); %> 
   <body>
     <header class="header-area">
-        <%- include ('partials/header'); %>  
+        <%- include ('partials/navbar'); %>  
           <!-- Template Main CSS File -->
   <link href="stylesheets/folio.css" rel="stylesheet">
   <link href="stylesheets/event.css" rel="stylesheet">
@@ -47,19 +47,19 @@
             <h2><%= rows[0].album_name %> Tracks</h2>
             <p>Enjoy the muziki!</p>
           </div>
-      <% for (var i = 0; i < rows.length; i++) { %>
-        <div class="row songs-item">
-          <div class="col-md-10">
-            <div class="speaker">
-              <img src="image/bg-img/b2.jpg" alt="music">
-            </div>
-            <a href="/">
-            <h4><%= rows[i].album_name %> <span><%= rows[0].artist_name %></span></h4>
-            <p>Genre</p>
-          </div>
-          </a>
-        </div><!--END SONG SECTION-->
-        <% } %> 
+          <% for (var i = 0; i < rows.length; i++) { %>
+            <div class="row songs-item">
+              <div class="col-md-10">
+                <div class="speaker">
+                  <img src="<%= rows[i].album_uri %>" alt="music">
+                </div>
+                <a href="/song?songName=<%= rows[i].title %>">
+                <h4><%= rows[i].title %>  <br><span><%= rows[0].album_name %></span></h4>
+                <p><%= rows[i].duration %></p>
+              </div>
+              </a>
+            </div><!--END SONG SECTION-->
+            <% } %> 
         </div>
       </section>
   </body>

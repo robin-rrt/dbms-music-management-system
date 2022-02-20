@@ -15,16 +15,19 @@ const pool = mysql.createPool({
 /* GET home page. */
 // index page
 router.get('/', function(req, res) {
+  var searchItem = req.query.search;
+  console.log(searchItem);
+
   
   pool.getConnection((err, connection) => {
     if(err) throw err
     console.log('connected as id ' + connection.threadId)
-    connection.query("SELECT * FROM artist", (err, rows) => {
+    connection.query(`SELECT * FROM artist WHERE artist_name LIKE '${searchItem}%';`, (err, rows) => {
         connection.release() // return the connection to pool
 
         if (!err) {
             // res.send(rows);
-            res.render('artistSearch', {title: 'Artist Search', rows: rows})
+            res.render('artistSearch', {title: 'Artist Search', rows: rows, searchItem:searchItem})
         } else {
             console.log(err)
         }
@@ -38,3 +41,5 @@ router.get('/', function(req, res) {
 });
 
 module.exports = router;
+
+//SELECT * FROM artist WHERE artist_name LIKE ? + '%';

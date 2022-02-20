@@ -824,7 +824,7 @@ button {
   -ms-flex-align: center;
       align-items: center;
   font-family: 'Poppins', sans-serif;
-  padding: 15px;
+  padding: 5px;
 }
 .s132-bg{
   background: url("../image/bg3.jfif");
@@ -833,7 +833,7 @@ button {
 }
 
 .s133{
-  min-height: 100vh;
+  min-height: 100%;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
@@ -849,19 +849,25 @@ button {
   max-width: 790px;
 }
 
+
 .s132 form .inner-form {
   background: rgba(0, 0, 0, 0.5);
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
+  /* /* -ms-flex-pack: justify;
+      justify-content: space-between; */
   -ms-flex-align: center;
       align-items: center;
+
 }
 
 .s132 form .inner-form .input-field {
-  height: 68px;
+  height: 58px;
+}
+
+.s132 form .inner-form .input-field-nav{
+  height: 48px;
 }
 
 .s132 form .inner-form .input-field input {
@@ -994,7 +1000,7 @@ button {
   cursor: pointer;
   position: relative;
   z-index: 0;
-  background: linear-gradient(45deg, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);
+  background: linear-gradient(45deg, #d59f2c 0%, #d58c2c 28%, #ff4b5a 91%, #ff4b5a 100%);
 }
 
 .s132 form .inner-form .input-field.third-wrap .btn-search:before {

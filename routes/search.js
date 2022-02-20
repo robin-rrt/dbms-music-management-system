@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { body,validationResult } = require('express-validator');
+const { search } = require('.');
 
 /* GET home page. */
 // index page
@@ -23,16 +24,16 @@ router.post('/', body('search').trim(), body('choices').trim(),
                 }
                 
                 if(choiceItem == 'Songs'){
-                    res.redirect('song-result');
+                    res.redirect(`/song-result?search=${searchItem}`);
                 }
                 else if(choiceItem == 'Genre'){
-                    res.redirect('genre-result');
+                    res.redirect(`/genre-result?search=${searchItem}`);
                 }
                 else if(choiceItem == 'Artist'){
-                    res.redirect('artist-result');
+                    res.redirect(`/artist-result?search=${searchItem}`);
                 }
                 else if(choiceItem == 'Albums'){
-                    res.redirect('album-result');
+                    res.redirect(`/album-result?search=${searchItem}`);
                 }
 
                 console.log(searchItem);

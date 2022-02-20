@@ -15,25 +15,25 @@ const pool = mysql.createPool({
 // index page
 router.get('/', function(req, res) {
 
-    var artistName = req.query.artistName;
-    console.log(artistName);
+    var albumName = req.query.albumName;
+    console.log(albumName);
 
 
     pool.getConnection((err, connection) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
-        connection.query("SELECT * FROM artist INNER JOIN album ON artist.artist_id=album.artist_id AND artist.artist_name = ? ", artistName,  (err, rows) => {
+        connection.query("SELECT * FROM album INNER JOIN artist ON artist.artist_id=album.artist_id AND album.album_name = ? ", albumName,  (err, rows) => {
             connection.release() // return the connection to pool
             
             if (!err) {
                 // res.send(rows);
-                res.render('artistView', {title: 'ARTIST NAME', rows:rows})
+                res.render('albumView', {title: 'ALBUM NAME', rows:rows})
             } else {
                 console.log(err)
             }
   
             // if(err) throw err
-            console.log('Artist information', rows)
+            console.log('Album information', rows)
         })
     })
 });

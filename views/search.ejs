@@ -18,20 +18,27 @@
     </header>
     <div class="s132 s132-bg">
       <h1 style="text-align: center;padding: 2%; color: aliceblue;"><%= title %></h1>
-      <form method="POST" action="/search">
+      <form method="POST" action="/search" class="needs-validation" novalidate>
         <div class="inner-form">
           <div class="input-field first-wrap">
             <div class="input-select">
-              <select data-trigger="" name="choices">
-                <option placeholder="" inactive>Search By</option>
-                <option>Song</option>
+              <select data-trigger="" name="choices" class="form-select" id="validationCustom04" required>
+                <option placeholder="" inactive selected disabled value="">Search By</option>
+                <option>Albums</option>
+                <option>Songs</option>
                 <option>Artist</option>
                 <option>Genre</option>
               </select>
+              <div class="invalid-feedback">
+                Please select a Search Category.
+              </div>
             </div>
           </div>
           <div class="input-field second-wrap">
-            <input id="search" name="search" type="text" placeholder="Enter Search Query" />
+            <input id="search" name="search" type="text" placeholder="Enter Search Query" class="form-control" required/>
+            <div class="invalid-feedback">
+              Please enter a query.
+            </div>
           </div>
           <div class="input-field third-wrap">
             <button class="btn-search" type="submit">Search</button>
@@ -46,6 +53,25 @@
         searchEnabled: true,
         itemSelectText: '',
       });
+      (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+          .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+
+              form.classList.add('was-validated')
+            }, false)
+          })
+      })()
 
     </script>
   </body><!-- This templates was made by Colorlib (https://colorlib.com) -->

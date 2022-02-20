@@ -18,6 +18,8 @@ var songSearchRouter = require('./routes/songSearch');
 var artisteSearchRouter = require('./routes/artistSearch');
 var artistRouter = require('./routes/artist');
 var songRouter = require('./routes/song');
+var albumSearchRouter = require('./routes/albumSearch');
+var albumRouter = require('./routes/album');
 
 
 
@@ -62,6 +64,8 @@ app.use('/song-result', songSearchRouter);
 app.use('/artist-result', artisteSearchRouter);
 app.use('/artist', artistRouter);
 app.use('/song', songRouter);
+app.use('/album-result', albumSearchRouter);
+app.use('/album', albumRouter);
 
 
 

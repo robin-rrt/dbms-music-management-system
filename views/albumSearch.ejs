@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head'); %> 
+  <body>
+    <header class="header-area">
+        <%- include ('partials/header'); %>  
+      </header>
+      <br>
+      <br>
+
+       <!-- ##### Buy Now Area Start ##### -->
+
+       <section class="oneMusic-buy-now-area has-fluid bg-gray section-padding-100">
+
+        <div class="container-fluid">
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading style-2">
+                        <h2><%= title %></h2>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+               <% for (var i = 0; i < rows.length; i++) { %>
+                   <!-- Single Album Area -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-2" id="<%= rows[i].album_name %> ">
+                    <a href="/album?albumName=<%= rows[i].album_name %>">
+                    <div class="single-album-area wow fadeInUp" data-wow-delay="200ms">
+                        <div class="album-thumb" style="width:200px;height:200px;overflow:hidden">
+                            <img src="<%= rows[i].album_uri %>" alt="<%= rows[i].album_name %>">
+                        </div>
+                        <div class="album-info">
+                            
+                                <h5><%= rows[i].album_name %></h5>
+                            
+                            <!-- <p>Buble Gum</p> -->
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                    <% } %>
+
+
+
+
+
+            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Buy Now Area End ##### -->
+  </body>
+</html>

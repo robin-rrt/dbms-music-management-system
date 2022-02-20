@@ -22,7 +22,7 @@ router.post('/', body('search').trim(), body('choices').trim(),
                     res.render('search', {title: 'MUZIKI',})
                 }
                 
-                if(choiceItem == 'Song'){
+                if(choiceItem == 'Songs'){
                     res.redirect('song-result');
                 }
                 else if(choiceItem == 'Genre'){
@@ -30,6 +30,9 @@ router.post('/', body('search').trim(), body('choices').trim(),
                 }
                 else if(choiceItem == 'Artist'){
                     res.redirect('artist-result');
+                }
+                else if(choiceItem == 'Albums'){
+                    res.redirect('album-result');
                 }
 
                 console.log(searchItem);
